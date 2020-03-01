@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN "
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sl.srpingboot001.mapper.EmployeeMapper">
+    <select id="getEmployee" resultType="employee">
+        select * from persons.employee
+    </select>
+    <insert id="addEmployee" parameterType="employee">
+        insert into persons.employee(lasName, email, gender, departmentId, birth)
+        values (#{lasName},#{email},#{gender},#{departmentId},#{birth})
+    </insert>
+    <delete id="deleteEmployee" parameterType="int">
+        delete from persons.employee where id=#{id}
+    </delete>
+    <select id="getEmployeeById" parameterType="int" resultType="employee">
+        select * from persons.employee where  id=#{id};
+    </select>
+     <update id="updateEmployee" parameterType="employee">
+         update persons.employee set
+         lasName= #{lasName},
+         email=#{email},
+         gender=#{gender},
+         departmentId=#{departmentId} ,
+         birth=#{birth}
+         where id=#{id}
+     </update>
+</mapper>
